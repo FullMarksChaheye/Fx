@@ -7,6 +7,7 @@ import javafx.event.EventHandler;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
@@ -47,6 +48,10 @@ public class Main extends Application {
 			ComboBox<String> combo = new ComboBox<>();
 			ToggleGroup group1 = new ToggleGroup();
 			
+			CheckBox box = new CheckBox();
+			box.setText("Meow");
+			
+			
 			Label z = new Label();
 			
 			TextField x = new TextField();
@@ -63,7 +68,8 @@ public class Main extends Application {
 			y.setOnAction(new EventHandler<ActionEvent>() {
 				@Override
 				public void handle(ActionEvent arg0) {
-					z.setText(x.getText()+" Button Selected is :"+((RadioButton)group1.getSelectedToggle()).getText()+"Combo Selected is :"+combo.getValue());
+					z.setText(x.getText()+" Button Selected is :"+((RadioButton)group1.getSelectedToggle()).getText()+"Combo Selected is :"
+							+ ""+combo.getValue() + "\nCheck Box Selected : "+(box.isSelected() ? "Yes" : "No"));
 				}
 			});
 			
@@ -90,6 +96,7 @@ public class Main extends Application {
 			root.add(r2, 1, 2);
 			root.add(r3, 2, 2);
 			root.add(combo, 0, 4);
+			root.add(box, 2, 4);
 			root.add(y, 1, 5);
 			root.add(z, 1, 6);
 			
