@@ -2,10 +2,15 @@ package application;
 	
 import javafx.application.Application;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.StackPane;
 
 
@@ -13,21 +18,40 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			StackPane root = new StackPane();
 			
-			Button x = new Button();
-			x.setText("Abeer");
+			FlowPane root = new FlowPane();
 			
-			x.setOnAction(new EventHandler<ActionEvent> () {
-
+			Label z = new Label();
+			
+			TextField x = new TextField();
+			x.setText("Write Something here");
+			x.setOnMouseClicked(new EventHandler<Event>() {
+				@Override
+				public void handle(Event arg0) {
+					System.out.println("Clicked on me Bro");
+				}
+			});
+			
+			Button y = new Button();
+			y.setText("Second me");
+			y.setOnAction(new EventHandler<ActionEvent>() {
 				@Override
 				public void handle(ActionEvent arg0) {
-					System.out.println("Abeer is Good");
+					z.setText(x.getText());
 				}
-				
 			});
 			
 			root.getChildren().add(x);
+			root.getChildren().add(y);
+			root.getChildren().add(z);
+			
+			/*
+			BorderPane root = new BorderPane();
+			
+			root.setBottom(x);
+			root.setTop(y);
+			root.setCenter(z);
+			*/
 			
 			Scene scene = new Scene(root,400,400);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
