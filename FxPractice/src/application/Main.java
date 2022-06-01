@@ -68,6 +68,18 @@ public class Main extends Application {
 			y.setOnAction(new EventHandler<ActionEvent>() {
 				@Override
 				public void handle(ActionEvent arg0) {
+					FlowPane fp = new FlowPane();
+					fp.getChildren().add(new Label("Another Window Opened"));
+					primaryStage.setScene(new Scene(fp));
+					
+					GridPane s = new GridPane();
+					s.add(new Button("Abeer"), 0, 0);
+					Stage anotherwindow = new Stage();
+					anotherwindow.setScene(new Scene(s));
+					anotherwindow.show();
+					
+					
+					
 					z.setText(x.getText()+" Button Selected is :"+((RadioButton)group1.getSelectedToggle()).getText()+"Combo Selected is :"
 							+ ""+combo.getValue() + "\nCheck Box Selected : "+(box.isSelected() ? "Yes" : "No"));
 				}
@@ -109,6 +121,7 @@ public class Main extends Application {
 			primaryStage.setScene(scene);
 			primaryStage.setWidth(600);
 			primaryStage.setHeight(800);
+			primaryStage.setTitle("Billu ka Program");
 			primaryStage.show();
 		} catch(Exception e) {
 			e.printStackTrace();
